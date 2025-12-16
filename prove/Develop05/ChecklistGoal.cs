@@ -5,6 +5,7 @@ public class ChecklistGoal : Goal
     private int _bonusValue;
     private int _timesCompleted;
     private int _targetCompletion;
+    private string _type = "Checklist";
 
     public ChecklistGoal(string name, string description, int pointValue, int bonusValue, int targetCompletion, int timesCompleted = 0) : base(name, description, pointValue)
     {
@@ -19,9 +20,15 @@ public class ChecklistGoal : Goal
         {
            return base.GetGoal(option) + $" -- Completed {_timesCompleted}/{_targetCompletion}"; 
         }
-        else
+
+        else if (option == 2)
         {
             return base.GetGoal(option);
+        }
+
+        else
+        {
+            return _type + base.GetGoal(4) + $"~{_bonusValue}~{_targetCompletion}~{_timesCompleted}";
         }
     }
 

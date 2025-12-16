@@ -3,6 +3,7 @@ using System;
 public class SimpleGoal : Goal
 {
     private bool _completed;
+    private string _type = "Simple";
 
     public SimpleGoal(string name, string description, int pointValue, bool completed = false) : base(name, description, pointValue)
     {
@@ -11,7 +12,15 @@ public class SimpleGoal : Goal
 
     public override string GetGoal(int option)
     {
-        return base.GetGoal(option);
+        if (option == 1 || option == 2)
+        {
+            return base.GetGoal(option);
+        }
+
+        else
+        {
+            return _type + base.GetGoal(4) + $"~{_completed}";
+        }
     }
 
     public override int RecordEvent()
